@@ -100,7 +100,9 @@ def main(args):
 
     def load_ckpt(ckpt_id="facebook/dino-vitb16"):
         image_processor = AutoImageProcessor.from_pretrained(ckpt_id)
-        model = ViTModel.from_pretrained(ckpt_id).eval()
+        # sdpa (the new default attention backend) silently ignores
+        # output_attentions=True -- force eager so attentions are actually returned.
+        model = ViTModel.from_pretrained(ckpt_id, attn_implementation="eager").eval()
         return model, image_processor
 
     ckpt_id = "facebook/dino-vitb16"
