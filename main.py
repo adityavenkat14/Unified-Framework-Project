@@ -243,16 +243,45 @@ def main(args):
             print(f"lazsl (standalone): {lazsl_acc:.2f}\n")
 
             if args.fusion_search:
-                best = grid_search_weights(s_global_logits, s_wca_logits, s_lazsl_logits, target,
-                                            steps=args.fusion_search_steps)
-                print(f"Best fusion weights on this split: {best}")
+                # Methodology fix: the grid search must NOT see the data the final
+                # accuracy is reported on, or "best" weights are partly just fitting
+                # noise in this specific split (this is exactly what happened before --
+                # a 1,331-combination search on the full test set found a +0.03 point
+                # "improvement" that's indistinguishable from chance). Split into a val
+                # half (search sees this) and a held-out test half (final number comes
+                # from this only, using the weights chosen on val).
+                g = torch.Generator().manual_seed(args.fusion_split_seed)
+                n = target.shape[0]
+                perm = torch.randperm(n, generator=g)
+                val_idx, test_idx = perm[: n // 2], perm[n // 2 :]
+
+                best = grid_search_weights(
+                    s_global_logits[val_idx], s_wca_logits[val_idx], s_lazsl_logits[val_idx],
+                    target[val_idx], steps=args.fusion_search_steps,
+                )
                 alpha, beta, gamma = best["alpha"], best["beta"], best["gamma"]
+                print(f"Best fusion weights on VAL half (n={len(val_idx)}): {best}")
+
+                fused_test = fuse_scores(s_global_logits[test_idx], s_wca_logits[test_idx],
+                                          s_lazsl_logits[test_idx], alpha, beta, gamma)
+                fused_test_acc = accuracy_from_scores(fused_test, target[test_idx])
+                # also report plain WCA on the SAME held-out half, for a fair apples-to-apples
+                # comparison -- otherwise fused_test_acc vs. the full-set "ours" number above
+                # aren't measuring the same thing
+                wca_test_acc = accuracy_from_scores(s_wca_logits[test_idx], target[test_idx])
+                print(f"On HELD-OUT test half (n={len(test_idx)}, never seen by the search):")
+                print(f"  wca alone:  {wca_test_acc:.2f}")
+                print(f"  fusion (alpha={alpha:.2f}, beta={beta:.2f}, gamma={gamma:.2f}): {fused_test_acc:.2f}")
+                with open('results.txt', 'a') as f:
+                    f.write(f"[val/test split, seed={args.fusion_split_seed}] "
+                            f"wca_test: {wca_test_acc:.2f}  "
+                            f"fusion_test(a={alpha:.2f},b={beta:.2f},g={gamma:.2f}): {fused_test_acc:.2f}\n")
+                    f.write('----------------\n')
             else:
                 alpha, beta, gamma = args.alpha, args.beta, args.gamma
-
-            fused = fuse_scores(s_global_logits, s_wca_logits, s_lazsl_logits, alpha, beta, gamma)
-            fused_acc = accuracy_from_scores(fused, target)
-            print(f"fusion (alpha={alpha:.2f}, beta={beta:.2f}, gamma={gamma:.2f}): {fused_acc:.2f}\n")
+                fused = fuse_scores(s_global_logits, s_wca_logits, s_lazsl_logits, alpha, beta, gamma)
+                fused_acc = accuracy_from_scores(fused, target)
+                print(f"fusion (alpha={alpha:.2f}, beta={beta:.2f}, gamma={gamma:.2f}): {fused_acc:.2f}\n")
             with open('results.txt', 'a') as f:
                 f.write(f"lazsl {args.dataset_name}: {lazsl_acc:.2f}\n")
                 f.write(f"fusion(a={alpha:.2f},b={beta:.2f},g={gamma:.2f}) {args.dataset_name}: {fused_acc:.2f}\n")
@@ -287,6 +316,8 @@ if __name__ == "__main__":
                               '(only valid as a validation-split step, not for final reported test accuracy)')
     parser.add_argument('--fusion_search_steps', type=int, default=5,
                          help='grid resolution per weight, e.g. 5 -> {0, .25, .5, .75, 1}, 11 -> steps of 0.1')
+    parser.add_argument('--fusion_split_seed', type=int, default=1,
+                         help='seed for the val/test split used when --fusion_search is on')
     parser.add_argument('--lazsl_max_iter', type=int, default=100, help='Sinkhorn max iterations')
     parser.add_argument('--lazsl_gama', type=float, default=0.1, help='LaZSL OP_d gama hyperparam')
     parser.add_argument('--lazsl_theta', type=float, default=0.0, help='LaZSL OP_d theta hyperparam')
