@@ -24,7 +24,7 @@ from fusion.fuse import fuse_scores, accuracy_from_scores, grid_search_weights
 def main(args):  
     device: str = "cuda"
     seed: int = args.seed
-    num_workers: int = 2
+    num_workers: int = 8
     
     def custom_loader(path: str) -> torch.Tensor:
         img = datasets.folder.default_loader(path)
@@ -167,8 +167,13 @@ def main(args):
                 patch_num = hparams["patch_n"]
                 # [num_classes, num_descriptions, D], pre-permute -- this is the shape
                 # LaZSL's OP_d expects per-class description embeddings in.
+                # zeroshot_classifier returns [num_descriptions, num_classes, D] (torch.stack(..., dim=1)).
+                # The permute below turns it into [num_classes, num_descriptions, D] -- capture AFTER
+                # permute, not before, since that's the shape compute_lazsl_scores expects (indexing by
+                # class first). Capturing pre-permute was the bug that produced a [num_desc]-shaped score
+                # tensor instead of a [num_classes]-shaped one.
+                zeroshot_weights = zeroshot_weights.permute(1, 0, 2)
                 zeroshot_weights_for_lazsl = zeroshot_weights.clone()
-                zeroshot_weights = zeroshot_weights.permute(1, 0, 2) 
                 print(f"n_run: {hparams['n_run']}")
                 for i in range(hparams["n_run"]):
                     random_indices = torch.randint(0, max_size, (patch_num,))
