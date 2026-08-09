@@ -282,10 +282,10 @@ def main(args):
                 fused = fuse_scores(s_global_logits, s_wca_logits, s_lazsl_logits, alpha, beta, gamma)
                 fused_acc = accuracy_from_scores(fused, target)
                 print(f"fusion (alpha={alpha:.2f}, beta={beta:.2f}, gamma={gamma:.2f}): {fused_acc:.2f}\n")
-            with open('results.txt', 'a') as f:
-                f.write(f"lazsl {args.dataset_name}: {lazsl_acc:.2f}\n")
-                f.write(f"fusion(a={alpha:.2f},b={beta:.2f},g={gamma:.2f}) {args.dataset_name}: {fused_acc:.2f}\n")
-                f.write('----------------\n')
+                with open('results.txt', 'a') as f:
+                    f.write(f"lazsl {args.dataset_name}: {lazsl_acc:.2f}\n")
+                    f.write(f"fusion(a={alpha:.2f},b={beta:.2f},g={gamma:.2f}) {args.dataset_name}: {fused_acc:.2f}\n")
+                    f.write('----------------\n')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Example script using argparse")
