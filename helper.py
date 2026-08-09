@@ -163,6 +163,8 @@ def generate_weights(
             load_file = "cupl"
         elif method == "cupl":
             load_file = "cupl"
+        elif method == "goal-curated":
+            load_file = "goal-curated"
         elif method == "waffle":
             load_file = "clip-d"
         else:
@@ -171,7 +173,7 @@ def generate_weights(
         with open(f"prompts/{dataset_name}/{load_file}.json") as f:
             templates = json.load(f)
 
-        if method in ["waffle", "clip-d", "cupl", "ours"]:
+        if method in ["waffle", "clip-d", "cupl", "ours", "goal-curated"]:
             is_template = False
 
         if method == "clip-d":
