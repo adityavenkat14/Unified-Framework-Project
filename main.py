@@ -243,7 +243,8 @@ def main(args):
             print(f"lazsl (standalone): {lazsl_acc:.2f}\n")
 
             if args.fusion_search:
-                best = grid_search_weights(s_global_logits, s_wca_logits, s_lazsl_logits, target)
+                best = grid_search_weights(s_global_logits, s_wca_logits, s_lazsl_logits, target,
+                                            steps=args.fusion_search_steps)
                 print(f"Best fusion weights on this split: {best}")
                 alpha, beta, gamma = best["alpha"], best["beta"], best["gamma"]
             else:
@@ -284,6 +285,8 @@ if __name__ == "__main__":
     parser.add_argument('--fusion_search', action='store_true',
                          help='grid-search alpha/beta/gamma on THIS split instead of using --alpha/beta/gamma '
                               '(only valid as a validation-split step, not for final reported test accuracy)')
+    parser.add_argument('--fusion_search_steps', type=int, default=5,
+                         help='grid resolution per weight, e.g. 5 -> {0, .25, .5, .75, 1}, 11 -> steps of 0.1')
     parser.add_argument('--lazsl_max_iter', type=int, default=100, help='Sinkhorn max iterations')
     parser.add_argument('--lazsl_gama', type=float, default=0.1, help='LaZSL OP_d gama hyperparam')
     parser.add_argument('--lazsl_theta', type=float, default=0.0, help='LaZSL OP_d theta hyperparam')
