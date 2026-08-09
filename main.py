@@ -24,7 +24,7 @@ from fusion.fuse import fuse_scores, accuracy_from_scores, grid_search_weights
 def main(args):  
     device: str = "cuda"
     seed: int = args.seed
-    num_workers: int = 8
+    num_workers: int = 2
     
     def custom_loader(path: str) -> torch.Tensor:
         img = datasets.folder.default_loader(path)
