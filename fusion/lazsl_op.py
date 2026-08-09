@@ -95,6 +95,13 @@ class OP_d():
             gama = torch.mean(sim, dim=(1, 2), keepdim=True)
         elif self.constrain_type=='att':
             gama = torch.mean(sim, dim=2, keepdim=True)
+        else:  # 'const' -- use the fixed threshold passed in at construction.
+            # Upstream LaZSL's OP.py has no else branch here, so 'const' (despite
+            # being listed as a valid constrain_type in their own docstring)
+            # leaves `gama` unassigned and crashes with UnboundLocalError. This
+            # is the natural fix: self.gama is exactly the fixed constant their
+            # __init__ already stores for this purpose.
+            gama = self.gama.to(sim.device)
         mask_att=sim< gama
         wdist = 1.0 - sim
         if is_cost_global:
@@ -139,9 +146,3 @@ class OP_d():
             return sim_op,T,sim_global
         else:
             return sim_op
-
-
-
-
-
-
