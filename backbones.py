@@ -26,7 +26,7 @@ def _convert_qkv(hf_sd, prefix_hf, prefix_openai, num_layers):
     out = {}
     for i in range(num_layers):
         hf_l = f"{prefix_hf}.encoder.layers.{i}"
-        oc_l = f"{prefix_openai}.resblocks.{i}"
+        oc_l = f"{prefix_openai}.{i}"
 
         q_w = hf_sd[f"{hf_l}.self_attn.q_proj.weight"]
         k_w = hf_sd[f"{hf_l}.self_attn.k_proj.weight"]
@@ -52,9 +52,19 @@ def _convert_qkv(hf_sd, prefix_hf, prefix_openai, num_layers):
     return out
 
 
-def convert_hf_to_openai(hf_sd: dict, num_vision_layers: int, num_text_layers: int) -> dict:
+def convert_hf_to_openai(hf_sd: dict, num_vision_layers: int, num_text_layers: int,
+                          context_length: int = 77) -> dict:
     """Convert a HuggingFace transformers.CLIPModel state_dict (what GOAL saves)
-    into the key layout used by clip/model.py's CLIP class."""
+    into the key layout used by clip/model.py's CLIP class.
+
+    GOAL finetunes with an extended text context length (248 tokens, to fit
+    DOCCI's long dense captions) vs. the standard 77 this codebase's CLIP was
+    built with. We truncate the positional embedding to the first
+    `context_length` rows -- safe here since every prompt this pipeline
+    generates (class names / short template sentences) is well under 77
+    tokens; we're not trying to support 248-token inputs, just reuse GOAL's
+    learned representations for short text.
+    """
     out = {}
 
     # ---- vision tower ----
@@ -72,7 +82,13 @@ def convert_hf_to_openai(hf_sd: dict, num_vision_layers: int, num_text_layers: i
 
     # ---- text tower ----
     out["token_embedding.weight"] = hf_sd["text_model.embeddings.token_embedding.weight"]
-    out["positional_embedding"] = hf_sd["text_model.embeddings.position_embedding.weight"]
+    pos_emb = hf_sd["text_model.embeddings.position_embedding.weight"]
+    if pos_emb.shape[0] != context_length:
+        print(f"[backbones] GOAL checkpoint has context_length={pos_emb.shape[0]}, "
+              f"this model uses {context_length} -- truncating positional_embedding "
+              f"to the first {context_length} rows (fine for short prompts).")
+        pos_emb = pos_emb[:context_length]
+    out["positional_embedding"] = pos_emb
     out["ln_final.weight"] = hf_sd["text_model.final_layer_norm.weight"]
     out["ln_final.bias"] = hf_sd["text_model.final_layer_norm.bias"]
     out["text_projection"] = hf_sd["text_projection.weight"].t().contiguous()
@@ -101,7 +117,8 @@ def load_backbone(kind: str, openai_name: str = "ViT-B/16", ckpt_path: str = Non
         hf_sd = torch.load(ckpt_path, map_location="cpu")
         num_vision_layers = model.visual.transformer.layers
         num_text_layers = model.transformer.layers
-        converted = convert_hf_to_openai(hf_sd, num_vision_layers, num_text_layers)
+        context_length = model.positional_embedding.shape[0]
+        converted = convert_hf_to_openai(hf_sd, num_vision_layers, num_text_layers, context_length)
 
         missing, unexpected = model.load_state_dict(converted, strict=strict)
         if missing:
@@ -109,6 +126,18 @@ def load_backbone(kind: str, openai_name: str = "ViT-B/16", ckpt_path: str = Non
                   f"(expected: buffers/attn_mask, etc.) e.g. {missing[:5]}")
         if unexpected:
             print(f"[backbones] {len(unexpected)} unexpected keys ignored, e.g. {unexpected[:5]}")
+
+        # Hard fail on any resblocks (transformer layer) key mismatch -- these should
+        # NEVER show up as missing/unexpected if the conversion worked. This is the
+        # exact class of bug that silently no-op'd the transformer block weights before
+        # (a doubled "resblocks.resblocks" path), so treat it as fatal, not a warning.
+        bad_missing = [k for k in missing if "resblocks" in k]
+        bad_unexpected = [k for k in unexpected if "resblocks" in k]
+        assert not bad_missing and not bad_unexpected, (
+            f"GOAL weight conversion has a key mismatch in the transformer blocks -- "
+            f"this means the transformer layers did NOT actually get GOAL's weights. "
+            f"missing e.g. {bad_missing[:3]}, unexpected e.g. {bad_unexpected[:3]}"
+        )
 
         # Sanity check on a couple of tensors so a silent shape mismatch doesn't
         # slip through as a "successful" load.
