@@ -242,6 +242,34 @@ def main(args):
             lazsl_acc = accuracy_from_scores(s_lazsl_logits, target)
             print(f"lazsl (standalone): {lazsl_acc:.2f}\n")
 
+            # --- WCA/LaZSL agreement diagnostic ---
+            # Weighted-sum fusion (below) asks "does adding S_LaZSL move accuracy."
+            # This asks a different question: when WCA and LaZSL AGREE on a prediction,
+            # is that prediction more trustworthy than when they disagree? If so, LaZSL
+            # is useful as a confidence/consistency signal even though it doesn't help
+            # as a raw fusion term (which is what we found on both OxfordPets and CUB).
+            wca_pred = s_wca_logits.argmax(dim=1)
+            lazsl_pred = s_lazsl_logits.argmax(dim=1)
+            agree_mask = wca_pred == lazsl_pred
+            n_agree = agree_mask.sum().item()
+            pct_agree = 100.0 * n_agree / len(target)
+            if n_agree > 0:
+                acc_agree = (wca_pred[agree_mask] == target[agree_mask]).float().mean().item() * 100
+            else:
+                acc_agree = float('nan')
+            disagree_mask = ~agree_mask
+            n_disagree = disagree_mask.sum().item()
+            if n_disagree > 0:
+                acc_disagree_wca = (wca_pred[disagree_mask] == target[disagree_mask]).float().mean().item() * 100
+            else:
+                acc_disagree_wca = float('nan')
+            print(f"WCA/LaZSL agreement: {pct_agree:.1f}% of images ({n_agree}/{len(target)})")
+            print(f"  accuracy when they AGREE:       {acc_agree:.2f}  (WCA overall: {accuracy_from_scores(s_wca_logits, target):.2f})")
+            print(f"  WCA accuracy when they DISAGREE: {acc_disagree_wca:.2f}\n")
+            with open('results.txt', 'a') as f:
+                f.write(f"[agreement diagnostic] {args.dataset_name}: agree={pct_agree:.1f}% "
+                        f"acc_when_agree={acc_agree:.2f} wca_acc_when_disagree={acc_disagree_wca:.2f}\n")
+
             if args.fusion_search:
                 # Methodology fix: the grid search must NOT see the data the final
                 # accuracy is reported on, or "best" weights are partly just fitting
