@@ -31,6 +31,21 @@ from backbones import load_backbone
 from helper import load_dataset, load_classes, wordify
 
 
+def get_paths_and_labels(dataset):
+    """Different dataset classes in this repo expose image paths/labels under different
+    attribute names -- OxfordPets' custom class uses _images/_labels, CUB (built on
+    torchvision's ImageFolder) uses samples/targets. Normalize both to plain lists."""
+    if hasattr(dataset, "_images") and hasattr(dataset, "_labels"):
+        return list(dataset._images), list(dataset._labels)
+    if hasattr(dataset, "samples") and hasattr(dataset, "targets"):
+        paths = [p for p, _ in dataset.samples]
+        return paths, list(dataset.targets)
+    raise AttributeError(
+        f"Don't know how to get image paths/labels from {type(dataset).__name__} -- "
+        f"add a case to get_paths_and_labels() for this dataset's attribute names."
+    )
+
+
 def make_crops(image: Image.Image, n_crops: int):
     """Full image + a few overlapping sub-crops -- this is what "region" means
     to GOAL's local loss (region = crop of the image, not a patch token)."""
@@ -100,17 +115,10 @@ def main(args):
         candidates = json.load(f)  # {"class name": [sentences...]}
 
     # build class_name -> list of image indices, using the dataset's own label ints
-    labels = getattr(dataset, "_labels", None)
-    assert labels is not None, (
-        "This script expects dataset._labels (int class indices) -- "
-        "extend it for datasets whose loader doesn't expose that attribute."
-    )
+    image_paths_attr, labels = get_paths_and_labels(dataset)
     by_class_idx = {}
     for i, lbl in enumerate(labels):
         by_class_idx.setdefault(lbl, []).append(i)
-
-    image_paths_attr = getattr(dataset, "_images", None)
-    assert image_paths_attr is not None, "This script expects dataset._images (file paths)."
 
     curated = {}
     random.seed(args.seed)
