@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 import yaml
+import json
 import argparse
 from helper import (
     accuracy,
@@ -249,6 +250,23 @@ def main(args):
             # is useful as a confidence/consistency signal even though it doesn't help
             # as a raw fusion term (which is what we found on both OxfordPets and CUB).
             wca_pred = s_wca_logits.argmax(dim=1)
+
+            # --- per-class accuracy, for the GOAL-grounding-quality diagnostic ---
+            # Cheap to compute here (already have s_wca_logits/target aligned) --
+            # separately, goal_class_diagnostic.py computes a per-class GOAL grounding
+            # score. Correlating the two tests: do classes where GOAL finds strong,
+            # specific grounding for their descriptions tend to be the classes WCA
+            # actually gets right?
+            num_classes_ = s_wca_logits.shape[1]
+            per_class_acc = {}
+            for c in range(num_classes_):
+                mask = target == c
+                if mask.sum() > 0:
+                    per_class_acc[c] = (wca_pred[mask] == target[mask]).float().mean().item() * 100
+            with open(f'features/{args.dataset_name}/wca_per_class_acc.json', 'w') as f:
+                json.dump(per_class_acc, f)
+            print(f"Saved per-class WCA accuracy for {len(per_class_acc)} classes.\n")
+
             lazsl_pred = s_lazsl_logits.argmax(dim=1)
             agree_mask = wca_pred == lazsl_pred
             n_agree = agree_mask.sum().item()
