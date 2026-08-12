@@ -29,7 +29,7 @@ import torch
 
 from backbones import load_backbone
 from helper import load_dataset, load_classes
-from goal_supervision import score_descriptions_for_class
+from goal_supervision import score_descriptions_for_class, get_paths_and_labels
 
 
 def main(args):
@@ -47,11 +47,10 @@ def main(args):
     with open(f"prompts/{args.dataset_name}/{args.candidate_source}.json") as f:
         candidates = json.load(f)
 
-    labels = dataset._labels
+    image_paths_attr, labels = get_paths_and_labels(dataset)
     by_class_idx = {}
     for i, lbl in enumerate(labels):
         by_class_idx.setdefault(lbl, []).append(i)
-    image_paths_attr = dataset._images
 
     results = {}
     random.seed(args.seed)
