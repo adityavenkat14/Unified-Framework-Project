@@ -227,5 +227,6 @@ if __name__ == "__main__":
     parser.add_argument("--layer2", type=int, default=11)
     parser.add_argument("--clip_crop_r1", type=float, default=0.6)
     parser.add_argument("--clip_crop_r2", type=float, default=0.9)
+    parser.add_argument("--patch_size", type=int, default=14)
     args = parser.parse_args()
     main(args)
