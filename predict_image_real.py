@@ -44,9 +44,19 @@ def run_custom_loader(path, model_dino, processor_dino, processor, args):
     augmented_imgs = [processor_dino(img, return_tensors="pt")["pixel_values"].squeeze(0)]
     augmented_imgs.extend(processor(img) for _ in range(1))
     attention_imgs_dino = processor_dino(img, return_tensors="pt")
+
+    dino_device = next(model_dino.parameters()).device
+    attention_imgs_dino = {
+      k: v.to(dino_device)
+      for k, v in attention_imgs_dino.items()
+    }
+
     with torch.no_grad():
-        image_attention_mh = model_dino(**attention_imgs_dino, output_attentions=True)
-        image_attention_mh = image_attention_mh.attentions
+      image_attention_mh = model_dino(
+          **attention_imgs_dino,
+          output_attentions=True
+    )
+    image_attention_mh = image_attention_mh.attentions
     n_head = image_attention_mh[args.layer1].shape[1]
     attention_map = image_attention_mh[args.layer1][0, :, 0, 1:].reshape(n_head, -1).float()
     att_map = attention_map.mean(dim=0)
