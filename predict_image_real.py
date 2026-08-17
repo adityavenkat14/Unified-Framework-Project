@@ -44,19 +44,9 @@ def run_custom_loader(path, model_dino, processor_dino, processor, args):
     augmented_imgs = [processor_dino(img, return_tensors="pt")["pixel_values"].squeeze(0)]
     augmented_imgs.extend(processor(img) for _ in range(1))
     attention_imgs_dino = processor_dino(img, return_tensors="pt")
-
-    dino_device = next(model_dino.parameters()).device
-    attention_imgs_dino = {
-      k: v.to(dino_device)
-      for k, v in attention_imgs_dino.items()
-    }
-
     with torch.no_grad():
-      image_attention_mh = model_dino(
-          **attention_imgs_dino,
-          output_attentions=True
-    )
-    image_attention_mh = image_attention_mh.attentions
+        image_attention_mh = model_dino(**attention_imgs_dino, output_attentions=True)
+        image_attention_mh = image_attention_mh.attentions
     n_head = image_attention_mh[args.layer1].shape[1]
     attention_map = image_attention_mh[args.layer1][0, :, 0, 1:].reshape(n_head, -1).float()
     att_map = attention_map.mean(dim=0)
@@ -170,9 +160,17 @@ def main(args):
     print("Computing real WCA logits ...")
     logits = wca_logits(patch_embeds, patch_weights, zeroshot_weights)
     classes = load_classes(args.dataset_name)
-    wca_probs = logits.softmax(dim=-1)[0]
-    wca_ranked = sorted(zip(classes, wca_probs.tolist()), key=lambda x: -x[1])
-    wca_pred = wca_ranked[0][0]
+    # main.py's real accuracy() computation uses argmax directly on raw logits --
+    # it never applies softmax. Raw logits are a SUM over ~100 regions, so their
+    # magnitude is large enough that a naive softmax saturates to exactly 1.0/0.0
+    # in float32 once one class pulls ahead -- misleading display, not a real
+    # problem with the computation. Rescale (divide by region count) before
+    # softmax purely so relative confidence is actually visible in the printout.
+    num_regions = patch_embeds.shape[1]
+    display_probs = (logits[0] / num_regions).softmax(dim=-1)
+    wca_ranked_raw = sorted(zip(classes, logits[0].tolist()), key=lambda x: -x[1])
+    wca_ranked = sorted(zip(classes, display_probs.tolist()), key=lambda x: -x[1])
+    wca_pred = wca_ranked_raw[0][0]  # argmax is identical either way -- rescaling is display-only
 
     print("Computing real LaZSL score for the agreement check ...")
     op_d = build_op_d()
@@ -227,6 +225,5 @@ if __name__ == "__main__":
     parser.add_argument("--layer2", type=int, default=11)
     parser.add_argument("--clip_crop_r1", type=float, default=0.6)
     parser.add_argument("--clip_crop_r2", type=float, default=0.9)
-    parser.add_argument("--patch_size", type=int, default=14)
     args = parser.parse_args()
     main(args)
