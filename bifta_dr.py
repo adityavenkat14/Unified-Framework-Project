@@ -36,7 +36,7 @@ def cosine_sim_filter(descriptions, embeddings, epsilon):
     """f_CS: reject a candidate if it's >= (1-epsilon) cosine-similar to
     anything already kept. epsilon=0.99 (paper's best setting) means only
     reject near-identical descriptions, not just similar ones."""
-    threshold = 1 - epsilon
+    threshold = epsilon
     kept_idx = []
     for i in range(len(descriptions)):
         if not kept_idx:
