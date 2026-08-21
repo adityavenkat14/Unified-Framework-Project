@@ -145,6 +145,7 @@ def load_feature_bundle(
         clip_crop_r2 = 0.9
         layer1 = 11
         layer2 = 11
+        patch_size = 14
     args_shim = _ArgsShim()
 
     patch_size = 16
