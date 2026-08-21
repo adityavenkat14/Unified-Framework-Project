@@ -217,13 +217,16 @@ def load_feature_bundle(
     # precomputed_features: [N, 2*num_crops, D+1] -- strip the trailing
     # attention-weight column (last dim), which isn't part of the feature
     # itself, just a per-crop scalar weight used elsewhere in the pipeline.
-    region_features = precomputed_features[:, :, :-1].cpu()
+    # Cast to float32: CLIP runs in float16 on GPU by default, but the
+    # adapter MLPs are float32 -- mismatched dtypes would fail at the first
+    # linear layer otherwise.
+    region_features = precomputed_features[:, :, :-1].float().cpu()
 
     class_names = load_classes(dataset_name)
     descriptions_path = f"prompts/{dataset_name}/{descriptions_method}.json"
     description_features = _encode_class_descriptions(
         model, class_names, descriptions_path, device, fixed_k=fixed_k
-    ).cpu()
+    ).float().cpu()
 
     return FeatureBundle(
         region_features=region_features,
