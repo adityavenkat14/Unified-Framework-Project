@@ -207,7 +207,7 @@ def load_feature_bundle(
     precomputed_features, target, _image_features = load_precomputed_features(
         model, args_shim, processor,
         dataset_name=dataset_name, model_size=model_size, alpha=alpha,
-        n_samples=n_samples, batch_size=batch_size, num_workers=2,
+        n_samples=n_samples, batch_size=batch_size, num_workers=0,
         data_path=data_path, custom_loader=custom_loader, device=device,
         layer1=args_shim.layer1, layer2=args_shim.layer2, split=split,
     )
