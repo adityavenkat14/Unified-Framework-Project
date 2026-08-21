@@ -34,7 +34,7 @@ def set_seed(seed):
     torch.cuda.manual_seed_all(seed)
 
 
-def load_dataset(data_path, dataset_name, custom_loader, split="test"):
+def load_dataset(data_path, dataset_name, custom_loader):
     data_path = data_path
 
     if dataset_name == MyDataset.ImageNet:
@@ -76,7 +76,7 @@ def load_dataset(data_path, dataset_name, custom_loader, split="test"):
     elif dataset_name == MyDataset.CUB:
         dataset = CUBDataset(
             data_path,
-            train=(split == "train"),
+            train=False,
             transform=None,
             loader=custom_loader,
         )
@@ -94,7 +94,7 @@ def load_dataset(data_path, dataset_name, custom_loader, split="test"):
         dataset = OxfordIIITPet(
             data_path,
             transform=None,
-            split=("trainval" if split == "train" else "test"),
+            split="test",
             loader=custom_loader,
         )
 
@@ -222,7 +222,6 @@ def load_precomputed_features(
     device: torch.device,
     layer1: int,
     layer2: int,
-    split: str = "test",
 ):
     save_file = (dataset_name + "-" + model_size).replace("/", "-")
     save_root = f"features/{dataset_name}"
@@ -230,11 +229,7 @@ def load_precomputed_features(
     if not os.path.exists(save_root):
         os.makedirs(save_root)
 
-    filename = os.path.join(
-        save_root,
-        f"{save_file}-crop_fea-1layer-{args.num_crops}-{args.top_k}-with-dino2"
-        f"{'-train' if split == 'train' else ''}.pkl",
-    )
+    filename = os.path.join(save_root, f"{save_file}-crop_fea-1layer-{args.num_crops}-{args.top_k}-with-dino2.pkl")
 
     if os.path.exists(filename):
         print(f"Loading {filename}...")
@@ -245,7 +240,6 @@ def load_precomputed_features(
             data_path=data_path,
             dataset_name=dataset_name,
             custom_loader=custom_loader,
-            split=split,
         )
 
         dataloader = DataLoader(
