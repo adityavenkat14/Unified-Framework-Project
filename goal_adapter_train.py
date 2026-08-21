@@ -171,6 +171,7 @@ def load_feature_bundle(
         augmented_imgs.extend(processor(img) for _ in range(1))
 
         attention_imgs_dino = processor_dino(img, return_tensors="pt")
+        attention_imgs_dino = {k: v.to(device) for k, v in attention_imgs_dino.items()}
         with torch.no_grad():
             image_attention_mh = model_dino(**attention_imgs_dino, output_attentions=True)
         image_attention_mh = image_attention_mh.attentions
