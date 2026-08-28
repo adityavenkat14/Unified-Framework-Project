@@ -1,31 +1,26 @@
-model_size: ViT-B/16
-batch_size: 16
-dataset: cub
-data_path : /data/CUB_200_2011
-
 alpha: 0.5
-n_samples: 60
-n_run: 10
-patch_n: 60
-
+batch_size: 16
+data_path: /content/data/cub/CUB_200_2011
+dataset: cub
 methods:
-  - clip: 
-      name: clip
-      enabled: True
-  - clip-e:
-      name: clip-e
-      enabled: True
-  - clip-d:
-      name: clip-d
-      enabled: True
-  - waffle:
-      name: waffle
-      enabled: True
-  - cupl:
-      name: cupl
-      enabled: True
-  - ours:
-      name: ours
-      enabled: True
-      image_scale: 4.0
-      text_scale: 2.0
+- clip:
+    enabled: true
+    name: clip
+- clip-e:
+    enabled: true
+    name: clip-e
+- clip-d:
+    enabled: true
+    name: clip-d
+- cupl:
+    enabled: true
+    name: cupl
+- ours:
+    enabled: true
+    image_scale: 4.0
+    name: ours
+    text_scale: 2.0
+model_size: ViT-B/16
+n_run: 10
+n_samples: 60
+patch_n: 60
