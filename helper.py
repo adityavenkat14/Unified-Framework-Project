@@ -66,6 +66,18 @@ def load_dataset(data_path, dataset_name, custom_loader, split="test"):
             loader=custom_loader,
         )
 
+    elif dataset_name == MyDataset.ImageNet100:
+        # data_path should point at /content/data/imagenet100/train or
+        # /content/data/imagenet100/validation directly (ImageFolder needs
+        # the class-subfolders one level down from root) -- resolved via
+        # the split argument, matching materialize_imagenet100.py's layout.
+        folder_name = "train" if split == "train" else "validation"
+        dataset = ImageFolder(
+            root=f"{data_path}/{folder_name}",
+            transform=None,
+            loader=custom_loader,
+        )
+
     elif dataset_name == MyDataset.ImageNetA:
         dataset = ImageFolder(
             root=data_path,

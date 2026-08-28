@@ -17,6 +17,7 @@ class MyDataset(str, Enum):
     Food101 = "food101"
     OxfordIIITPet = "oxford_pet"
     Place365 = "place365"
+    ImageNet100 = "imagenet100"
 
     def __str__(self) -> str:
         return self.value
