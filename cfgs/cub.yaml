@@ -20,6 +20,9 @@ methods:
     image_scale: 4.0
     name: ours
     text_scale: 2.0
+- bifta-dr:
+    enabled: true
+    name: bifta-dr
 model_size: ViT-B/16
 n_run: 10
 n_samples: 60
