@@ -29,6 +29,7 @@ from adapter import GoalAdapterPair
 from backbones import load_backbone
 from helper import accuracy, load_precomputed_features, load_classes, set_seed
 from goal_adapter_train import _encode_class_descriptions  # reuse the exact same encoding logic used in training
+from fusion.lazsl_score import build_op_d, compute_lazsl_scores
 
 
 def evaluate(args):
@@ -160,6 +161,33 @@ def evaluate(args):
         with open("results.txt", "a") as f:
             f.write(f"goal-adapter-ours {args.dataset_name}: {mean:.2f}+-{std:.2f}\n  ")
 
+        # --- LaZSL agreement check (Step 0 diagnostic, on adapted embeddings) ---
+        # Computed once (not per n_run iteration -- LaZSL scoring is deterministic
+        # given fixed embeddings, unlike WCA's loop which exists to eventually
+        # support real resampling once the n_run bug upstream is fixed).
+        print("\nComputing LaZSL agreement check (matches predict_unified.py's per-image logic, "
+              "run here across the full test split) ...")
+        op_d = build_op_d()
+        lazsl_scores = compute_lazsl_scores(adapted_patch_embeds, zeroshot_weights, op_d,
+                                             batch_chunk=args.lazsl_batch_chunk)
+        wca_preds = logits.argmax(dim=1)
+        lazsl_preds = lazsl_scores.argmax(dim=1)
+        agree_mask = (wca_preds == lazsl_preds)
+        agree_rate = agree_mask.float().mean().item() * 100.0
+
+        correct_mask = (wca_preds == target)
+        acc_when_agree = correct_mask[agree_mask].float().mean().item() * 100.0 if agree_mask.any() else float("nan")
+        acc_when_disagree = correct_mask[~agree_mask].float().mean().item() * 100.0 if (~agree_mask).any() else float("nan")
+
+        print(f"WCA/LaZSL agreement rate: {agree_rate:.2f}% of test images")
+        print(f"  Accuracy when WCA & LaZSL AGREE:    {acc_when_agree:.2f}%")
+        print(f"  Accuracy when WCA & LaZSL DISAGREE: {acc_when_disagree:.2f}%")
+        with open("results.txt", "a") as f:
+            f.write(
+                f"goal-adapter-lazsl-agreement {args.dataset_name}: "
+                f"rate={agree_rate:.2f}% acc_agree={acc_when_agree:.2f} acc_disagree={acc_when_disagree:.2f}\n  "
+            )
+
     return mean, std
 
 
@@ -171,6 +199,8 @@ if __name__ == "__main__":
     parser.add_argument("--descriptions_method", type=str, default="bifta-dr")
     parser.add_argument("--fixed_k", type=int, default=30)
     parser.add_argument("--seed", type=int, default=1)
+    parser.add_argument("--lazsl_batch_chunk", type=int, default=100,
+                         help="Batch chunk size for LaZSL scoring (memory/speed tradeoff on the full test split)")
     args = parser.parse_args()
 
     evaluate(args)
