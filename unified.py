@@ -54,10 +54,11 @@ def cmd_describe(args):
 
 
 def cmd_zeroshot(args):
+    enable_fusion = getattr(args, "enable_fusion", False)
     cmd = ["python", "main.py", "--dataset_name", args.dataset, "--backbone", "openai"]
-    if args.enable_fusion:
+    if enable_fusion:
         cmd.append("--enable_fusion")
-    run(cmd, f"Running zero-shot baseline scoring for '{args.dataset}'" + (" (with LaZSL/fusion)" if args.enable_fusion else ""))
+    run(cmd, f"Running zero-shot baseline scoring for '{args.dataset}'" + (" (with LaZSL/fusion)" if enable_fusion else ""))
 
 
 def cmd_train(args):
@@ -165,6 +166,8 @@ if __name__ == "__main__":
     p_pipeline.add_argument("--patience", type=int, default=5)
     p_pipeline.add_argument("--descriptions_method", default="bifta-dr")
     p_pipeline.add_argument("--fixed_k", type=int, default=30)
+    p_pipeline.add_argument("--enable_fusion", action="store_true",
+                             help="Also compute LaZSL scores + WCA/LaZSL agreement diagnostic during the zeroshot stage")
     p_pipeline.set_defaults(func=cmd_pipeline)
 
     args = parser.parse_args()
