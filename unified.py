@@ -54,10 +54,10 @@ def cmd_describe(args):
 
 
 def cmd_zeroshot(args):
-    run(
-        ["python", "main.py", "--dataset_name", args.dataset, "--backbone", "openai"],
-        f"Running zero-shot baseline scoring for '{args.dataset}'",
-    )
+    cmd = ["python", "main.py", "--dataset_name", args.dataset, "--backbone", "openai"]
+    if args.enable_fusion:
+        cmd.append("--enable_fusion")
+    run(cmd, f"Running zero-shot baseline scoring for '{args.dataset}'" + (" (with LaZSL/fusion)" if args.enable_fusion else ""))
 
 
 def cmd_train(args):
@@ -127,6 +127,8 @@ if __name__ == "__main__":
 
     p_zeroshot = sub.add_parser("zeroshot", help="Run zero-shot baseline scoring for a dataset")
     p_zeroshot.add_argument("--dataset", required=True)
+    p_zeroshot.add_argument("--enable_fusion", action="store_true",
+                             help="Also compute LaZSL scores + WCA/LaZSL agreement diagnostic")
     p_zeroshot.set_defaults(func=cmd_zeroshot)
 
     p_train = sub.add_parser("train", help="Train the GOAL adapter for a dataset")
