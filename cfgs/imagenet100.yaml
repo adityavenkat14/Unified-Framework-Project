@@ -1,22 +1,8 @@
+dataset_name: imagenet100
 data_path: /content/data/imagenet100
 model_size: ViT-B/16
-alpha: 0.5
-n_samples: null
-batch_size: 32
-n_run: 10
-patch_n: 50
-methods:
-  - clip:
-      name: clip
-      enabled: true
-  - clip-e:
-      name: clip-e
-      enabled: true
-  - cupl:
-      name: cupl
-      enabled: true
-  - ours:
-      name: ours
-      enabled: true
-      image_scale: 4.0
-      text_scale: 2.0
+alpha: 0.6
+n_samples: 100
+batch_size: 16
+patch_n: 20
+n_run: 1

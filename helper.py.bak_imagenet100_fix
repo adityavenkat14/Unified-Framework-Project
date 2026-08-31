@@ -159,7 +159,7 @@ def generate_weights(
     make_sentence = False
     is_template = True
 
-    if dataset_name == MyDataset.ImageNet:
+    if dataset_name.startswith(MyDataset.ImageNet):
         classes = (
             openai_imagenet_classes
             if method in ["clip-d", "waffle"]

@@ -1,0 +1,602 @@
+{
+  "stingray": [
+    "a photo of a stingray.",
+    "a close-up photo of a stingray.",
+    "a detailed image showing features of a stingray.",
+    "a cropped visual patch of a stingray."
+  ],
+  "European fire salamander": [
+    "a photo of a European fire salamander.",
+    "a close-up photo of a European fire salamander.",
+    "a detailed image showing features of a European fire salamander.",
+    "a cropped visual patch of a European fire salamander."
+  ],
+  "eft": [
+    "a photo of a eft.",
+    "a close-up photo of a eft.",
+    "a detailed image showing features of a eft.",
+    "a cropped visual patch of a eft."
+  ],
+  "bullfrog": [
+    "a photo of a bullfrog.",
+    "a close-up photo of a bullfrog.",
+    "a detailed image showing features of a bullfrog.",
+    "a cropped visual patch of a bullfrog."
+  ],
+  "tailed frog": [
+    "a photo of a tailed frog.",
+    "a close-up photo of a tailed frog.",
+    "a detailed image showing features of a tailed frog.",
+    "a cropped visual patch of a tailed frog."
+  ],
+  "alligator lizard": [
+    "a photo of a alligator lizard.",
+    "a close-up photo of a alligator lizard.",
+    "a detailed image showing features of a alligator lizard.",
+    "a cropped visual patch of a alligator lizard."
+  ],
+  "green lizard": [
+    "a photo of a green lizard.",
+    "a close-up photo of a green lizard.",
+    "a detailed image showing features of a green lizard.",
+    "a cropped visual patch of a green lizard."
+  ],
+  "scorpion": [
+    "a photo of a scorpion.",
+    "a close-up photo of a scorpion.",
+    "a detailed image showing features of a scorpion.",
+    "a cropped visual patch of a scorpion."
+  ],
+  "black grouse": [
+    "a photo of a black grouse.",
+    "a close-up photo of a black grouse.",
+    "a detailed image showing features of a black grouse.",
+    "a cropped visual patch of a black grouse."
+  ],
+  "ptarmigan": [
+    "a photo of a ptarmigan.",
+    "a close-up photo of a ptarmigan.",
+    "a detailed image showing features of a ptarmigan.",
+    "a cropped visual patch of a ptarmigan."
+  ],
+  "sulphur-crested cockatoo": [
+    "a photo of a sulphur-crested cockatoo.",
+    "a close-up photo of a sulphur-crested cockatoo.",
+    "a detailed image showing features of a sulphur-crested cockatoo.",
+    "a cropped visual patch of a sulphur-crested cockatoo."
+  ],
+  "hummingbird": [
+    "a photo of a hummingbird.",
+    "a close-up photo of a hummingbird.",
+    "a detailed image showing features of a hummingbird.",
+    "a cropped visual patch of a hummingbird."
+  ],
+  "jacamar": [
+    "a photo of a jacamar.",
+    "a close-up photo of a jacamar.",
+    "a detailed image showing features of a jacamar.",
+    "a cropped visual patch of a jacamar."
+  ],
+  "goose": [
+    "a photo of a goose.",
+    "a close-up photo of a goose.",
+    "a detailed image showing features of a goose.",
+    "a cropped visual patch of a goose."
+  ],
+  "platypus": [
+    "a photo of a platypus.",
+    "a close-up photo of a platypus.",
+    "a detailed image showing features of a platypus.",
+    "a cropped visual patch of a platypus."
+  ],
+  "wallaby": [
+    "a photo of a wallaby.",
+    "a close-up photo of a wallaby.",
+    "a detailed image showing features of a wallaby.",
+    "a cropped visual patch of a wallaby."
+  ],
+  "slug": [
+    "a photo of a slug.",
+    "a close-up photo of a slug.",
+    "a detailed image showing features of a slug.",
+    "a cropped visual patch of a slug."
+  ],
+  "white stork": [
+    "a photo of a white stork.",
+    "a close-up photo of a white stork.",
+    "a detailed image showing features of a white stork.",
+    "a cropped visual patch of a white stork."
+  ],
+  "dowitcher": [
+    "a photo of a dowitcher.",
+    "a close-up photo of a dowitcher.",
+    "a detailed image showing features of a dowitcher.",
+    "a cropped visual patch of a dowitcher."
+  ],
+  "Rhodesian ridgeback": [
+    "a photo of a Rhodesian ridgeback.",
+    "a close-up photo of a Rhodesian ridgeback.",
+    "a detailed image showing features of a Rhodesian ridgeback.",
+    "a cropped visual patch of a Rhodesian ridgeback."
+  ],
+  "bloodhound": [
+    "a photo of a bloodhound.",
+    "a close-up photo of a bloodhound.",
+    "a detailed image showing features of a bloodhound.",
+    "a cropped visual patch of a bloodhound."
+  ],
+  "Walker hound": [
+    "a photo of a Walker hound.",
+    "a close-up photo of a Walker hound.",
+    "a detailed image showing features of a Walker hound.",
+    "a cropped visual patch of a Walker hound."
+  ],
+  "miniature schnauzer": [
+    "a photo of a miniature schnauzer.",
+    "a close-up photo of a miniature schnauzer.",
+    "a detailed image showing features of a miniature schnauzer.",
+    "a cropped visual patch of a miniature schnauzer."
+  ],
+  "West Highland white terrier": [
+    "a photo of a West Highland white terrier.",
+    "a close-up photo of a West Highland white terrier.",
+    "a detailed image showing features of a West Highland white terrier.",
+    "a cropped visual patch of a West Highland white terrier."
+  ],
+  "Gordon setter": [
+    "a photo of a Gordon setter.",
+    "a close-up photo of a Gordon setter.",
+    "a detailed image showing features of a Gordon setter.",
+    "a cropped visual patch of a Gordon setter."
+  ],
+  "Sussex spaniel": [
+    "a photo of a Sussex spaniel.",
+    "a close-up photo of a Sussex spaniel.",
+    "a detailed image showing features of a Sussex spaniel.",
+    "a cropped visual patch of a Sussex spaniel."
+  ],
+  "schipperke": [
+    "a photo of a schipperke.",
+    "a close-up photo of a schipperke.",
+    "a detailed image showing features of a schipperke.",
+    "a cropped visual patch of a schipperke."
+  ],
+  "malinois": [
+    "a photo of a malinois.",
+    "a close-up photo of a malinois.",
+    "a detailed image showing features of a malinois.",
+    "a cropped visual patch of a malinois."
+  ],
+  "komondor": [
+    "a photo of a komondor.",
+    "a close-up photo of a komondor.",
+    "a detailed image showing features of a komondor.",
+    "a cropped visual patch of a komondor."
+  ],
+  "Bouvier des Flandres": [
+    "a photo of a Bouvier des Flandres.",
+    "a close-up photo of a Bouvier des Flandres.",
+    "a detailed image showing features of a Bouvier des Flandres.",
+    "a cropped visual patch of a Bouvier des Flandres."
+  ],
+  "Greater Swiss Mountain dog": [
+    "a photo of a Greater Swiss Mountain dog.",
+    "a close-up photo of a Greater Swiss Mountain dog.",
+    "a detailed image showing features of a Greater Swiss Mountain dog.",
+    "a cropped visual patch of a Greater Swiss Mountain dog."
+  ],
+  "Siberian husky": [
+    "a photo of a Siberian husky.",
+    "a close-up photo of a Siberian husky.",
+    "a detailed image showing features of a Siberian husky.",
+    "a cropped visual patch of a Siberian husky."
+  ],
+  "white wolf": [
+    "a photo of a white wolf.",
+    "a close-up photo of a white wolf.",
+    "a detailed image showing features of a white wolf.",
+    "a cropped visual patch of a white wolf."
+  ],
+  "tabby": [
+    "a photo of a tabby.",
+    "a close-up photo of a tabby.",
+    "a detailed image showing features of a tabby.",
+    "a cropped visual patch of a tabby."
+  ],
+  "Siamese cat": [
+    "a photo of a Siamese cat.",
+    "a close-up photo of a Siamese cat.",
+    "a detailed image showing features of a Siamese cat.",
+    "a cropped visual patch of a Siamese cat."
+  ],
+  "ice bear": [
+    "a photo of a ice bear.",
+    "a close-up photo of a ice bear.",
+    "a detailed image showing features of a ice bear.",
+    "a cropped visual patch of a ice bear."
+  ],
+  "tiger beetle": [
+    "a photo of a tiger beetle.",
+    "a close-up photo of a tiger beetle.",
+    "a detailed image showing features of a tiger beetle.",
+    "a cropped visual patch of a tiger beetle."
+  ],
+  "hippopotamus": [
+    "a photo of a hippopotamus.",
+    "a close-up photo of a hippopotamus.",
+    "a detailed image showing features of a hippopotamus.",
+    "a cropped visual patch of a hippopotamus."
+  ],
+  "ram": [
+    "a photo of a ram.",
+    "a close-up photo of a ram.",
+    "a detailed image showing features of a ram.",
+    "a cropped visual patch of a ram."
+  ],
+  "impala": [
+    "a photo of a impala.",
+    "a close-up photo of a impala.",
+    "a detailed image showing features of a impala.",
+    "a cropped visual patch of a impala."
+  ],
+  "armadillo": [
+    "a photo of a armadillo.",
+    "a close-up photo of a armadillo.",
+    "a detailed image showing features of a armadillo.",
+    "a cropped visual patch of a armadillo."
+  ],
+  "chimpanzee": [
+    "a photo of a chimpanzee.",
+    "a close-up photo of a chimpanzee.",
+    "a detailed image showing features of a chimpanzee.",
+    "a cropped visual patch of a chimpanzee."
+  ],
+  "guenon": [
+    "a photo of a guenon.",
+    "a close-up photo of a guenon.",
+    "a detailed image showing features of a guenon.",
+    "a cropped visual patch of a guenon."
+  ],
+  "macaque": [
+    "a photo of a macaque.",
+    "a close-up photo of a macaque.",
+    "a detailed image showing features of a macaque.",
+    "a cropped visual patch of a macaque."
+  ],
+  "howler monkey": [
+    "a photo of a howler monkey.",
+    "a close-up photo of a howler monkey.",
+    "a detailed image showing features of a howler monkey.",
+    "a cropped visual patch of a howler monkey."
+  ],
+  "lesser panda": [
+    "a photo of a lesser panda.",
+    "a close-up photo of a lesser panda.",
+    "a detailed image showing features of a lesser panda.",
+    "a cropped visual patch of a lesser panda."
+  ],
+  "barracouta": [
+    "a photo of a barracouta.",
+    "a close-up photo of a barracouta.",
+    "a detailed image showing features of a barracouta.",
+    "a cropped visual patch of a barracouta."
+  ],
+  "baseball": [
+    "a photo of a baseball.",
+    "a close-up photo of a baseball.",
+    "a detailed image showing features of a baseball.",
+    "a cropped visual patch of a baseball."
+  ],
+  "bassoon": [
+    "a photo of a bassoon.",
+    "a close-up photo of a bassoon.",
+    "a detailed image showing features of a bassoon.",
+    "a cropped visual patch of a bassoon."
+  ],
+  "brassiere": [
+    "a photo of a brassiere.",
+    "a close-up photo of a brassiere.",
+    "a detailed image showing features of a brassiere.",
+    "a cropped visual patch of a brassiere."
+  ],
+  "buckle": [
+    "a photo of a buckle.",
+    "a close-up photo of a buckle.",
+    "a detailed image showing features of a buckle.",
+    "a cropped visual patch of a buckle."
+  ],
+  "candle": [
+    "a photo of a candle.",
+    "a close-up photo of a candle.",
+    "a detailed image showing features of a candle.",
+    "a cropped visual patch of a candle."
+  ],
+  "crane": [
+    "a photo of a crane.",
+    "a close-up photo of a crane.",
+    "a detailed image showing features of a crane.",
+    "a cropped visual patch of a crane."
+  ],
+  "envelope": [
+    "a photo of a envelope.",
+    "a close-up photo of a envelope.",
+    "a detailed image showing features of a envelope.",
+    "a cropped visual patch of a envelope."
+  ],
+  "flute": [
+    "a photo of a flute.",
+    "a close-up photo of a flute.",
+    "a detailed image showing features of a flute.",
+    "a cropped visual patch of a flute."
+  ],
+  "freight car": [
+    "a photo of a freight car.",
+    "a close-up photo of a freight car.",
+    "a detailed image showing features of a freight car.",
+    "a cropped visual patch of a freight car."
+  ],
+  "golf ball": [
+    "a photo of a golf ball.",
+    "a close-up photo of a golf ball.",
+    "a detailed image showing features of a golf ball.",
+    "a cropped visual patch of a golf ball."
+  ],
+  "handkerchief": [
+    "a photo of a handkerchief.",
+    "a close-up photo of a handkerchief.",
+    "a detailed image showing features of a handkerchief.",
+    "a cropped visual patch of a handkerchief."
+  ],
+  "horse cart": [
+    "a photo of a horse cart.",
+    "a close-up photo of a horse cart.",
+    "a detailed image showing features of a horse cart.",
+    "a cropped visual patch of a horse cart."
+  ],
+  "hourglass": [
+    "a photo of a hourglass.",
+    "a close-up photo of a hourglass.",
+    "a detailed image showing features of a hourglass.",
+    "a cropped visual patch of a hourglass."
+  ],
+  "knot": [
+    "a photo of a knot.",
+    "a close-up photo of a knot.",
+    "a detailed image showing features of a knot.",
+    "a cropped visual patch of a knot."
+  ],
+  "ladle": [
+    "a photo of a ladle.",
+    "a close-up photo of a ladle.",
+    "a detailed image showing features of a ladle.",
+    "a cropped visual patch of a ladle."
+  ],
+  "loupe": [
+    "a photo of a loupe.",
+    "a close-up photo of a loupe.",
+    "a detailed image showing features of a loupe.",
+    "a cropped visual patch of a loupe."
+  ],
+  "mask": [
+    "a photo of a mask.",
+    "a close-up photo of a mask.",
+    "a detailed image showing features of a mask.",
+    "a cropped visual patch of a mask."
+  ],
+  "microphone": [
+    "a photo of a microphone.",
+    "a close-up photo of a microphone.",
+    "a detailed image showing features of a microphone.",
+    "a cropped visual patch of a microphone."
+  ],
+  "minibus": [
+    "a photo of a minibus.",
+    "a close-up photo of a minibus.",
+    "a detailed image showing features of a minibus.",
+    "a cropped visual patch of a minibus."
+  ],
+  "moped": [
+    "a photo of a moped.",
+    "a close-up photo of a moped.",
+    "a detailed image showing features of a moped.",
+    "a cropped visual patch of a moped."
+  ],
+  "nail": [
+    "a photo of a nail.",
+    "a close-up photo of a nail.",
+    "a detailed image showing features of a nail.",
+    "a cropped visual patch of a nail."
+  ],
+  "oil filter": [
+    "a photo of a oil filter.",
+    "a close-up photo of a oil filter.",
+    "a detailed image showing features of a oil filter.",
+    "a cropped visual patch of a oil filter."
+  ],
+  "packet": [
+    "a photo of a packet.",
+    "a close-up photo of a packet.",
+    "a detailed image showing features of a packet.",
+    "a cropped visual patch of a packet."
+  ],
+  "pick": [
+    "a photo of a pick.",
+    "a close-up photo of a pick.",
+    "a detailed image showing features of a pick.",
+    "a cropped visual patch of a pick."
+  ],
+  "pier": [
+    "a photo of a pier.",
+    "a close-up photo of a pier.",
+    "a detailed image showing features of a pier.",
+    "a cropped visual patch of a pier."
+  ],
+  "pillow": [
+    "a photo of a pillow.",
+    "a close-up photo of a pillow.",
+    "a detailed image showing features of a pillow.",
+    "a cropped visual patch of a pillow."
+  ],
+  "pole": [
+    "a photo of a pole.",
+    "a close-up photo of a pole.",
+    "a detailed image showing features of a pole.",
+    "a cropped visual patch of a pole."
+  ],
+  "punching bag": [
+    "a photo of a punching bag.",
+    "a close-up photo of a punching bag.",
+    "a detailed image showing features of a punching bag.",
+    "a cropped visual patch of a punching bag."
+  ],
+  "radio": [
+    "a photo of a radio.",
+    "a close-up photo of a radio.",
+    "a detailed image showing features of a radio.",
+    "a cropped visual patch of a radio."
+  ],
+  "reel": [
+    "a photo of a reel.",
+    "a close-up photo of a reel.",
+    "a detailed image showing features of a reel.",
+    "a cropped visual patch of a reel."
+  ],
+  "reflex camera": [
+    "a photo of a reflex camera.",
+    "a close-up photo of a reflex camera.",
+    "a detailed image showing features of a reflex camera.",
+    "a cropped visual patch of a reflex camera."
+  ],
+  "scabbard": [
+    "a photo of a scabbard.",
+    "a close-up photo of a scabbard.",
+    "a detailed image showing features of a scabbard.",
+    "a cropped visual patch of a scabbard."
+  ],
+  "scoreboard": [
+    "a photo of a scoreboard.",
+    "a close-up photo of a scoreboard.",
+    "a detailed image showing features of a scoreboard.",
+    "a cropped visual patch of a scoreboard."
+  ],
+  "shopping cart": [
+    "a photo of a shopping cart.",
+    "a close-up photo of a shopping cart.",
+    "a detailed image showing features of a shopping cart.",
+    "a cropped visual patch of a shopping cart."
+  ],
+  "stone wall": [
+    "a photo of a stone wall.",
+    "a close-up photo of a stone wall.",
+    "a detailed image showing features of a stone wall.",
+    "a cropped visual patch of a stone wall."
+  ],
+  "stopwatch": [
+    "a photo of a stopwatch.",
+    "a close-up photo of a stopwatch.",
+    "a detailed image showing features of a stopwatch.",
+    "a cropped visual patch of a stopwatch."
+  ],
+  "strainer": [
+    "a photo of a strainer.",
+    "a close-up photo of a strainer.",
+    "a detailed image showing features of a strainer.",
+    "a cropped visual patch of a strainer."
+  ],
+  "teapot": [
+    "a photo of a teapot.",
+    "a close-up photo of a teapot.",
+    "a detailed image showing features of a teapot.",
+    "a cropped visual patch of a teapot."
+  ],
+  "theater curtain": [
+    "a photo of a theater curtain.",
+    "a close-up photo of a theater curtain.",
+    "a detailed image showing features of a theater curtain.",
+    "a cropped visual patch of a theater curtain."
+  ],
+  "trailer truck": [
+    "a photo of a trailer truck.",
+    "a close-up photo of a trailer truck.",
+    "a detailed image showing features of a trailer truck.",
+    "a cropped visual patch of a trailer truck."
+  ],
+  "trombone": [
+    "a photo of a trombone.",
+    "a close-up photo of a trombone.",
+    "a detailed image showing features of a trombone.",
+    "a cropped visual patch of a trombone."
+  ],
+  "vacuum": [
+    "a photo of a vacuum.",
+    "a close-up photo of a vacuum.",
+    "a detailed image showing features of a vacuum.",
+    "a cropped visual patch of a vacuum."
+  ],
+  "vestment": [
+    "a photo of a vestment.",
+    "a close-up photo of a vestment.",
+    "a detailed image showing features of a vestment.",
+    "a cropped visual patch of a vestment."
+  ],
+  "volleyball": [
+    "a photo of a volleyball.",
+    "a close-up photo of a volleyball.",
+    "a detailed image showing features of a volleyball.",
+    "a cropped visual patch of a volleyball."
+  ],
+  "Windsor tie": [
+    "a photo of a Windsor tie.",
+    "a close-up photo of a Windsor tie.",
+    "a detailed image showing features of a Windsor tie.",
+    "a cropped visual patch of a Windsor tie."
+  ],
+  "wreck": [
+    "a photo of a wreck.",
+    "a close-up photo of a wreck.",
+    "a detailed image showing features of a wreck.",
+    "a cropped visual patch of a wreck."
+  ],
+  "mushroom": [
+    "a photo of a mushroom.",
+    "a close-up photo of a mushroom.",
+    "a detailed image showing features of a mushroom.",
+    "a cropped visual patch of a mushroom."
+  ],
+  "banana": [
+    "a photo of a banana.",
+    "a close-up photo of a banana.",
+    "a detailed image showing features of a banana.",
+    "a cropped visual patch of a banana."
+  ],
+  "potpie": [
+    "a photo of a potpie.",
+    "a close-up photo of a potpie.",
+    "a detailed image showing features of a potpie.",
+    "a cropped visual patch of a potpie."
+  ],
+  "seashore": [
+    "a photo of a seashore.",
+    "a close-up photo of a seashore.",
+    "a detailed image showing features of a seashore.",
+    "a cropped visual patch of a seashore."
+  ],
+  "scuba diver": [
+    "a photo of a scuba diver.",
+    "a close-up photo of a scuba diver.",
+    "a detailed image showing features of a scuba diver.",
+    "a cropped visual patch of a scuba diver."
+  ],
+  "yellow lady's slipper": [
+    "a photo of a yellow lady's slipper.",
+    "a close-up photo of a yellow lady's slipper.",
+    "a detailed image showing features of a yellow lady's slipper.",
+    "a cropped visual patch of a yellow lady's slipper."
+  ],
+  "buckeye": [
+    "a photo of a buckeye.",
+    "a close-up photo of a buckeye.",
+    "a detailed image showing features of a buckeye.",
+    "a cropped visual patch of a buckeye."
+  ]
+}
