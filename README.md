@@ -1,43 +1,66 @@
- ---
+# Unified GOAL → ABS(WCA) → LaZSL pipeline
 
-<div align="center">    
- 
-# From Local Details to Global Context: Advancing Vision-Language Models with Attention-Based Selection
+## What's actually merged, and what's a stub
 
-[ICML2025] Official Code of **ABS**
+| Piece | Status | Where |
+|---|---|---|
+| ABS (attention-guided region selection + WCA weighted cross-alignment) | **Working, unmodified** — this is the base repo | `main.py`, `helper.py`, `clip/` |
+| GOAL backbone swap | **Wired up, untested** — converts GOAL's HF-CLIP checkpoint into this repo's OpenAI-CLIP key layout | `backbones.py` |
+| LaZSL optimal-transport score | **Wired up, untested** — reuses ABS's patch embeddings, loops LaZSL's Sinkhorn solver per class | `fusion/lazsl_score.py` |
+| Fusion `S = αS_global + βS_WCA + γS_LaZSL` | **Wired up, untested** | `fusion/fuse.py`, invoked from `main.py` with `--enable_fusion` |
 
-[Lincan Cai](https://scholar.google.com/citations?user=wH-dNbAAAAAJ&hl=zh-CN&oi=ao), [Jingxuan Kang](https://scholar.google.com/citations?user=Ij5yAYIAAAAJ&hl=en), [Shuang Li](https://shuangli.xyz), [Wenxuan Ma](https://scholar.google.com/citations?hl=zh-CN&user=u7aJOt8AAAAJ), [Binhui Xie](https://binhuixie.github.io), [Zhida Qin](https://zhidaqin.github.io/), [Jian Liang](https://scholar.google.com/citations?user=mrunnpoAAAAJ&hl=zh-CN)
+"Untested" = it's syntax-checked and the tensor shapes are traced through by hand against ABS's/LaZSL's actual source, but none of it has run against real data or a GPU, because this sandbox has neither. **Budget your first Colab session for debugging shape mismatches**, not for getting numbers — that's normal for a merge like this, not a sign something's wrong with the plan.
 
-<img alt="image" src="framework.png" width="90%" />
+The single highest-risk part is the GOAL→OpenAI-CLIP weight conversion in `backbones.py` — HuggingFace's `CLIPModel` and this repo's `clip/model.py` are the same architecture but different code, so key names had to be hand-mapped. If it errors, print `hf_sd.keys()` vs `model.state_dict().keys()` and diff them; the mapping logic is centralized in `convert_hf_to_openai()`.
 
-</div>
+## How to run it
 
-## Contribution
-- We propose an **A**ttention-**B**ased **S**election (**ABS**) to guide the cropping process, focusing on the main objects in the image and minimizing the risk of cropping background objects.
-- We introduce a feature selection that cropping at the feature map of the original image to supplement the cropped images with global information, ensuring that the model retains semantic understanding while focusing on local features.
-- We propose a soft matching approach, enabling targeted matching of text descriptions to different patches. **ABS** achieves state-of-the-art performance in zero-shot classification and out-of-distribution datasets, even outperforming methods that require finetuning.
-
-## Requirements
-- Environment
-
-For proper execution, please ensure Python is installed and all required dependencies are configured by running the following command from the project root directory:
 ```bash
-conda create --name <env> --file requirements.txt
+# baseline reproduction (sanity check before touching anything new)
+python main.py --dataset_name oxford_pet --backbone openai
 
+# swap in a GOAL-finetuned backbone
+python main.py --dataset_name oxford_pet --backbone goal --goal_ckpt /path/to/goal_vitb16_docci.pt
+
+# add LaZSL + fusion on top (needs 'clip' and 'ours' both enabled in cfgs/<dataset>.yaml)
+python main.py --dataset_name oxford_pet --enable_fusion --alpha 0.34 --beta 0.33 --gamma 0.33
+
+# find good fusion weights on a validation split first, THEN hardcode them for your test run
+python main.py --dataset_name oxford_pet --enable_fusion --fusion_search
 ```
-- Datasets
 
-To proceed with the experiments, please follow these steps:
-1. Download the required dataset, please refer to [Dataset.md](https://github.com/BIT-DA/ABS/blob/main/data/README.md)
-2. Update the corresponding `data_path` parameter in the configuration files located in the `cfgs` folder to point to your local dataset directory.
+## Colab Pro workflow — don't zip the repos into Drive
 
-## Experiment with zero-shot and OOD Benchmark
-Run the following command:
-```bash
-python main.py --dataset_name imagenet
+Zipping and re-uploading the code repos is the wrong pattern here, for two reasons: it's an extra manual step every time you fix a bug, and Drive I/O for many small files is slow. Use Drive for the things that are actually expensive to redo, and clone code fresh each session:
 
+**Every session, clone straight from GitHub (cheap, ~seconds):**
+```python
+!git clone https://github.com/tmlr-group/WCA.git      # reference only
+!git clone https://github.com/BIT-DA/ABS.git
+!git clone https://github.com/shiming-chen/LaZSL.git   # reference only
+!git clone https://github.com/PerceptualAI-Lab/GOAL.git
 ```
-where `dataset_name` specifies the dataset to be used.
+Then upload this `merged/` folder's *new* files (`backbones.py`, `fusion/`, the patched `main.py`) into the cloned `ABS` folder — or, better, push this merged folder to your own private GitHub repo once, and just `git clone` that one repo each session. That's the one thing worth doing once instead of every time.
 
-## Acknowledgements
-This project is based on the project: [WCA](https://github.com/tmlr-group/WCA). We thank the authors for making the source code publicly available.
+**Put in Google Drive (mount it, point paths at it), because these are large and slow to regenerate:**
+- The datasets themselves (`data_path` in `cfgs/<dataset>.yaml`)
+- GOAL's fine-tuned checkpoints (the `.pt` files, ~1-2GB each)
+- The `features/` cache — ABS's `helper.py` pickles precomputed patch embeddings per dataset/config so it doesn't recompute them every run; without Drive, that cache vanishes when the Colab runtime recycles and every run pays the DINO+CLIP forward-pass cost again
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+
+DRIVE_ROOT = '/content/drive/MyDrive/unified_zsl'
+# in cfgs/<dataset>.yaml: data_path -> f'{DRIVE_ROOT}/data/oxford_pet'
+# helper.py's save_root for the features cache -> f'{DRIVE_ROOT}/features'
+# --goal_ckpt -> f'{DRIVE_ROOT}/checkpoints/goal_vitb16_docci.pt'
+```
+
+That gets you: fast code iteration (fresh clone or your own repo, no zip juggling), and persistence for the one-time-download things (data, checkpoints, feature cache) that you don't want to lose every time the Colab runtime disconnects.
+
+## Suggested first session checklist
+1. Reproduce ABS's own baseline numbers on one small dataset (OxfordPets or CUB) with `--backbone openai` — confirms your environment + data path + feature cache are all correct before anything new is in the loop.
+2. Download one GOAL checkpoint (ViT-B/16, DOCCI) to Drive, run `--backbone goal`, fix whatever the key-conversion assertion complains about.
+3. Run `--enable_fusion` standalone (no GOAL) first, so if something breaks you know it's the LaZSL/fusion wiring and not the backbone swap.
+4. Only then combine GOAL backbone + fusion together.
