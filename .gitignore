@@ -1,9 +1,5 @@
-
-features/oxford_pet/*.pkl
-
 __pycache__/
 *.pyc
 features/*/*.pkl
 *.pt
-results.txt
 results.txt
