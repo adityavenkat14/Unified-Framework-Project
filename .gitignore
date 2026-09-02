@@ -3,3 +3,9 @@ __pycache__/
 features/*/*.pkl
 *.pt
 results.txt
+__pycache__/
+__pycache__/
+
+outputs/
+__pycache__/
+*.pyc
