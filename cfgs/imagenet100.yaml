@@ -6,3 +6,25 @@ n_samples: 100
 batch_size: 16
 patch_n: 20
 n_run: 1
+
+methods:
+  - clip:
+      enabled: true
+      name: clip
+  - clip-e:
+      enabled: true
+      name: clip-e
+  - clip-d:
+      enabled: true
+      name: clip-d
+  - cupl:
+      enabled: true
+      name: cupl
+  - ours:
+      enabled: true
+      image_scale: 4.0
+      name: ours
+      text_scale: 2.0
+  - bifta-dr:
+      enabled: true
+      name: bifta-dr

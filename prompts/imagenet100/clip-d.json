@@ -1,0 +1,814 @@
+{
+  "American alligator": [
+    "large, stocky reptile",
+    "greenish-brown or greyish-black",
+    "long, thick tail",
+    "short, blunt snout",
+    "large, powerful jaws",
+    "webbed feet",
+    "rough, scaly skin"
+  ],
+  "American coot": [
+    "a black bird with a white beak",
+    "webbed feet",
+    "a white bill with a red frontal shield",
+    "red eyes",
+    "a lobed toe on each foot"
+  ],
+  "Dungeness crab": [
+    "a crustacean",
+    "red or brown",
+    "a hard shell",
+    "five pairs of legs",
+    "two large claws",
+    "small, black eyes",
+    "long, antennae-like feelers"
+  ],
+  "Komodo dragon": [
+    "large, lizard-like reptile",
+    "scaly skin",
+    "long tail",
+    "sharp claws",
+    "long, forked tongue",
+    "large head with sharp teeth"
+  ],
+  "agama": [
+    "four-limbed reptile",
+    "scaly skin",
+    "long tail",
+    "small, triangular head",
+    "large eyes",
+    "brightly colored body"
+  ],
+  "albatross": [
+    "large, long-winged bird",
+    "white or grey plumage",
+    "black wingtips",
+    "long, hooked bill",
+    "webbed feet",
+    "long, narrow wings",
+    "slow, powerful flight"
+  ],
+  "axolotl": [
+    "a salamander with a permanently aquatic lifestyle",
+    "a long, slender body",
+    "external gills",
+    "a wide head",
+    "small, lidless eyes",
+    "a wide mouth with sharp teeth",
+    "webbed feet",
+    "a mottled brown, black, or greenish-brown coloration"
+  ],
+  "bald eagle": [
+    "large, powerful bird",
+    "white head and tail",
+    "dark brown body",
+    "hooked beak",
+    "talons",
+    "wingspan of up to 2.5 meters"
+  ],
+  "banded gecko": [
+    "a small to medium sized lizard",
+    "a flattened body",
+    "large, adhesive toe pads",
+    "narrow bands of color running along the body",
+    "a long tail",
+    "vertical pupils"
+  ],
+  "barn spider": [
+    "arachnid",
+    "black and yellow markings",
+    "eight legs",
+    "two body segments",
+    "two pairs of eyes",
+    "fangs",
+    "webbing"
+  ],
+  "bee eater": [
+    "a brightly colored bird",
+    "a long, curved beak",
+    "a small head",
+    "a slender body",
+    "long tail feathers",
+    "a black stripe through the eye",
+    "a black band on the wing"
+  ],
+  "black grouse": [
+    "a large, black bird",
+    "a short tail",
+    "a round body",
+    "a thick neck",
+    "small head",
+    "yellow eyes",
+    "dark legs",
+    "dark wings with white bars"
+  ],
+  "black swan": [
+    "a large bird with long neck and legs",
+    "black feathers",
+    "a red beak",
+    "webbed feet",
+    "a long, curved neck"
+  ],
+  "boa constrictor": [
+    "a large, heavy-bodied snake",
+    "a long, thick tail",
+    "a triangular head",
+    "large, round eyes",
+    "a wide mouth with sharp teeth",
+    "smooth, shiny scales",
+    "a pattern of light and dark colors"
+  ],
+  "bulbul": [
+    "a plump body",
+    "a short neck",
+    "a short, stout bill",
+    "a crest of feathers on the head",
+    "dark upperparts and paler underparts",
+    "two bare patches of skin on the face (one near each eye)",
+    "strong, legs and feet"
+  ],
+  "bustard": [
+    "a large, heavy bird",
+    "brown or grey plumage",
+    "a long neck and legs",
+    "a short tail",
+    "a large, round body",
+    "males have a large, fleshy throat sac used for display"
+  ],
+  "chambered nautilus": [
+    "a spiral shell",
+    "a soft body",
+    "tentacles",
+    "eyes on stalks",
+    "a siphon"
+  ],
+  "chickadee": [
+    "small, sparrow-like bird",
+    "black cap and bib with white cheeks",
+    "grey body with white underparts",
+    "black wings with white bars",
+    "short, stubby tail",
+    "small, black bill"
+  ],
+  "chiton": [
+    "a mollusc with a shell composed of eight plates",
+    "usually brightly coloured",
+    "the plates are often arranged in a spiral pattern",
+    "a chiton's body is usually visible between the plates",
+    "two pairs of tentacles on the head"
+  ],
+  "conch": [
+    "a large, spiral shell",
+    "a soft body inside the shell",
+    "a long, thin siphon",
+    "two large, fleshy tentacles",
+    "a small mouth with a hard beak"
+  ],
+  "coucal": [
+    "a large, dark-coloured bird",
+    "a long tail",
+    "a round body",
+    "a short, curved beak",
+    "small eyes",
+    "legs that are adapted for perching"
+  ],
+  "crayfish": [
+    "a crustacean",
+    "red, brown, or green",
+    "a hard exoskeleton",
+    "two large claws",
+    "eight legs",
+    "two long antennae",
+    "two compound eyes"
+  ],
+  "electric ray": [
+    "a flat, disc-shaped body",
+    "two large, round eyes on the top of the head",
+    "a large mouth with rows of small teeth",
+    "a long, whip-like tail",
+    "dark brown or black in coloration",
+    "can emit an electric shock"
+  ],
+  "flamingo": [
+    "a tall, thin bird",
+    "pink or red feathers",
+    "long legs",
+    "a long neck",
+    "a curved bill",
+    "webbed feet"
+  ],
+  "flatworm": [
+    "a flat, segmented body",
+    "no legs",
+    "a head with eyespots",
+    "a mouth located at the bottom of the head",
+    "a simple nervous system",
+    "a flat, ribbon-like shape"
+  ],
+  "garter snake": [
+    "a long, thin body",
+    "a small head",
+    "a pointed snout",
+    "small, round eyes",
+    "stripes running along the length of the body",
+    "a long, forked tongue"
+  ],
+  "goldfinch": [
+    "small, sparrow-like bird",
+    "yellow body with black wings and tail",
+    "black cap on head",
+    "white wing bars",
+    "thin, black bill"
+  ],
+  "goldfish": [
+    "a fish with a bright orange or yellow color",
+    "a long, flowing tail",
+    "small, black eyes",
+    "a small mouth",
+    "scales that shimmer in the light"
+  ],
+  "goose": [
+    "waterfowl",
+    "white or grey plumage",
+    "black neck and head",
+    "webbed feet",
+    "long, curved bill",
+    "honking call"
+  ],
+  "great grey owl": [
+    "large, stocky bird",
+    "grey or brown plumage with white spots",
+    "yellow eyes",
+    "black beak",
+    "large head with ear tufts",
+    "long, broad wings",
+    "short tail"
+  ],
+  "great white shark": [
+    "large, torpedo-shaped body",
+    "white or grey coloration",
+    "large, triangular dorsal fin",
+    "large, powerful tail",
+    "sharp, serrated teeth",
+    "small eyes"
+  ],
+  "green mamba": [
+    "long, slender body",
+    "green or olive-green coloration",
+    "black or dark brown bands on the body",
+    "black or dark brown markings on the head",
+    "black or dark brown eyes",
+    "long, black or dark brown tongue"
+  ],
+  "harvestman": [
+    "arachnid",
+    "eight legs",
+    "two body segments",
+    "long, thin legs",
+    "small, round body",
+    "no eyes",
+    "no antennae",
+    "two long, thin feelers"
+  ],
+  "hen": [
+    "a chicken",
+    "red, brown, or white feathers",
+    "a small body",
+    "a small head",
+    "a beak",
+    "two legs",
+    "two wings",
+    "a tail"
+  ],
+  "hermit crab": [
+    "small, lobster-like creature",
+    "hard shell with a soft, segmented body",
+    "two large claws, used for defense and for scavenging",
+    "two small eyes on stalks",
+    "antennae",
+    "legs for walking and swimming"
+  ],
+  "hornbill": [
+    "large, curved beak",
+    "brightly colored plumage",
+    "long tail feathers",
+    "large eyes",
+    "stout body",
+    "long legs"
+  ],
+  "hummingbird": [
+    "small size",
+    "brightly colored plumage",
+    "long, thin beak",
+    "wings that move very quickly",
+    "hovering flight"
+  ],
+  "indigo bunting": [
+    "blue plumage",
+    "black wings with white wing bars",
+    "white belly",
+    "small, black bill",
+    "dark eyes"
+  ],
+  "jellyfish": [
+    "a gelatinous, umbrella-shaped body",
+    "tentacles hanging from the body",
+    "a mouth surrounded by tentacles",
+    "translucent or transparent body",
+    "colorless or brightly-colored body"
+  ],
+  "limpkin": [
+    "long, orange bill",
+    "long legs",
+    "brown or grey plumage",
+    "white throat",
+    "red eyes"
+  ],
+  "lorikeet": [
+    "brightly colored plumage",
+    "curved beak",
+    "two toes pointing forward and two toes pointing backward",
+    "long tail feathers",
+    "small head",
+    "short legs"
+  ],
+  "macaw": [
+    "brightly colored plumage",
+    "long tail",
+    "large, curved beak",
+    "strong legs and claws",
+    "large wingspan"
+  ],
+  "magpie": [
+    "black and white plumage",
+    "long, pointed beak",
+    "two long tail feathers",
+    "small, black eyes",
+    "black legs and feet"
+  ],
+  "mud turtle": [
+    "a small to medium sized turtle",
+    "a dark brown or black shell",
+    "a light brown or white underside",
+    "webbed feet",
+    "a long tail",
+    "a pointed head"
+  ],
+  "nematode": [
+    "a small, worm-like creature",
+    "translucent or white in color",
+    "a small, round head",
+    "a long, thin body",
+    "no legs or other appendages"
+  ],
+  "night snake": [
+    "small, slender snake",
+    "black or dark brown",
+    "smooth scales",
+    "vertical pupils",
+    "heat-sensing pits on the head"
+  ],
+  "oystercatcher": [
+    "a black and white bird",
+    "a long, orange beak",
+    "webbed feet",
+    "a white breast and belly",
+    "black wings with white stripes",
+    "long legs"
+  ],
+  "pelican": [
+    "large, stocky bird",
+    "long, curved bill",
+    "large throat pouch",
+    "webbed feet",
+    "white or grey plumage",
+    "black wingtips"
+  ],
+  "ptarmigan": [
+    "a plump, chicken-like bird",
+    "mottled brown, grey, and white plumage",
+    "short tail",
+    "small, round head",
+    "black bill",
+    "dark eyes",
+    "short legs",
+    "webbed feet"
+  ],
+  "rock crab": [
+    "a crab with a hard, shell-like exoskeleton",
+    "five pairs of legs, with the first pair being larger and more powerful than the others",
+    "two large claws, used for crushing and tearing food",
+    "small, beady eyes on stalks",
+    "a wide, flat body",
+    "a short tail",
+    "usually red, brown, or purple in coloration"
+  ],
+  "rooster": [
+    "a chicken with a large, protruding comb on its head",
+    "red or orange wattles on its neck",
+    "long, pointy tail feathers",
+    "brightly colored plumage",
+    "loud crow"
+  ],
+  "scorpion": [
+    "arachnid",
+    "eight legs",
+    "two large, pincer-like claws",
+    "a long, segmented tail with a stinger at the end",
+    "a hard, exoskeleton",
+    "small, beady eyes",
+    "dark brown or black in color"
+  ],
+  "sea anemone": [
+    "a marine invertebrate",
+    "a soft, fleshy body",
+    "a central mouth surrounded by tentacles",
+    "a columnar or disk-shaped body",
+    "brightly colored",
+    "often found in coral reefs"
+  ],
+  "sea lion": [
+    "large, flippered marine mammal",
+    "black, brown, or grey",
+    "long, thick body",
+    "large head with long, whiskery snout",
+    "small eyes",
+    "large, webbed flippers",
+    "long, thick tail"
+  ],
+  "sea slug": [
+    "a soft-bodied mollusc",
+    "a shell-less gastropod",
+    "a slug-like creature",
+    "often brightly coloured",
+    "can vary in size from a few millimetres to over a metre in length",
+    "have two pairs of tentacles on their head"
+  ],
+  "sea snake": [
+    "long, thin body",
+    "no legs",
+    "a flattened tail",
+    "a pointed head",
+    "a forked tongue",
+    "venomous fangs",
+    "smooth, shiny scales",
+    "typically brightly colored"
+  ],
+  "snail": [
+    "a small, slimy creature",
+    "a shell on its back",
+    "two feelers on its head",
+    "two pairs of tentacles",
+    "a soft, wet body"
+  ],
+  "spiny lobster": [
+    "large, hard-shelled crustacean",
+    "red, brown, or green",
+    "long, spiny antennae",
+    "large claws",
+    "small eyes on stalks",
+    "10 legs, with the first 2 pairs being larger than the others"
+  ],
+  "spoonbill": [
+    "a long, thin bill",
+    "a white or pink body",
+    "long legs",
+    "webbed feet",
+    "black wingtips"
+  ],
+  "spotted salamander": [
+    "four-limbed amphibian",
+    "black or dark brown body with yellow spots",
+    "long tail",
+    "small eyes",
+    "moist skin",
+    "clawed hands and feet"
+  ],
+  "stingray": [
+    "a flat, disk-shaped body",
+    "a long, whip-like tail",
+    "two small, triangular dorsal fins",
+    "a row of sharp spines along the tail",
+    "a smooth, white underside"
+  ],
+  "sulphur-crested cockatoo": [
+    "a white bird with a yellow crest",
+    "a black beak",
+    "black eyes",
+    "grey feet",
+    "a long tail"
+  ],
+  "tailed frog": [
+    "four-limbed amphibian",
+    "green, brown, or black",
+    "a long tail",
+    "large eyes",
+    "moist skin",
+    "webbed hands and feet"
+  ],
+  "tarantula": [
+    "large, hairy spider",
+    "dark brown or black",
+    "long legs",
+    "large fangs",
+    "bulbous abdomen",
+    "small eyes"
+  ],
+  "tench": [
+    "a freshwater fish",
+    "olive green or brown in color",
+    "a dark bar on the side of the body",
+    "a thick, fleshy body",
+    "a large, flattened head",
+    "small eyes",
+    "a large mouth with thick lips"
+  ],
+  "terrapin": [
+    "four-limbed reptile",
+    "green, brown, or black shell",
+    "webbed feet",
+    "beak-like mouth",
+    "small eyes",
+    "long tail"
+  ],
+  "tick": [
+    "a small, dark, hard-bodied creature",
+    "long legs",
+    "a mouthparts that protrude from the head",
+    "a body that is flattened from top to bottom",
+    "no wings"
+  ],
+  "tiger shark": [
+    "large, predatory fish",
+    "dark stripes on a light background",
+    "a blunt, rounded snout",
+    "large, triangular fins",
+    "a long, powerful tail",
+    "razor-sharp teeth"
+  ],
+  "toucan": [
+    "brightly colored beak",
+    "black, white, or yellow body",
+    "webbed feet",
+    "long tail",
+    "sharp claws"
+  ],
+  "vine snake": [
+    "long, thin body",
+    "green or brown coloration",
+    "pattern of light and dark bands running the length of the body",
+    "pointed head",
+    "long, thin tongue",
+    "small, round eyes"
+  ],
+  "wallaby": [
+    "small to medium-sized marsupial",
+    "brown, grey, or black fur",
+    "white belly",
+    "pointed ears",
+    "long tail",
+    "hind legs that are longer than the front legs",
+    "small, compact body",
+    "short, stocky legs",
+    "clawed hands and feet"
+  ],
+  "white stork": [
+    "large, white bird",
+    "long neck",
+    "long, black legs",
+    "large, black bill",
+    "black wingtips",
+    "red or orange eyes"
+  ],
+  "wolf spider": [
+    "eight legs",
+    "two main body parts (cephalothorax and abdomen)",
+    "eight eyes (four small eyes in two rows on the cephalothorax, and four larger eyes in two rows on the abdomen)",
+    "long, thin legs",
+    "dark brown or black coloration",
+    "hairy or spiny body"
+  ],
+  "wombat": [
+    "a marsupial with a stocky body and short legs",
+    "a furry coat that is typically grey, brown, or black",
+    "a stubby tail",
+    "a short, round snout",
+    "small eyes and ears",
+    "large, clawed feet"
+  ],
+  "bittern": [
+    "a wading bird with a long neck and bill",
+    "brown or black and white plumage",
+    "long legs",
+    "webbed feet",
+    "a large, round body",
+    "a short tail"
+  ],
+  "black widow": [
+    "a black, shiny body with a red hourglass-shaped mark on the underside",
+    "long, black legs",
+    "a small head",
+    "a round, bulbous abdomen",
+    "a short, thin tail"
+  ],
+  "common iguana": [
+    "large, green lizard",
+    "long tail",
+    "long, sharp claws",
+    "long, sharp teeth",
+    "scaly skin"
+  ],
+  "common newt": [
+    "a small, dark-colored salamander",
+    "a long, slender body",
+    "a long tail",
+    "small, black eyes",
+    "smooth, moist skin",
+    "four legs that are each about the same length"
+  ],
+  "crane": [
+    "long neck",
+    "long legs",
+    "large wingspan",
+    "white or grey plumage",
+    "black legs and feet",
+    "yellow bill"
+  ],
+  "diamondback": [
+    "a large, heavy-bodied snake",
+    "a brown, tan, or grey body with dark brown or black bands",
+    "a rattle at the end of the tail",
+    "large, triangular head",
+    "slit-like pupils",
+    "heat-sensing pits on the sides of the head"
+  ],
+  "garden spider": [
+    "black and yellow markings",
+    "a large, round abdomen",
+    "long, thin legs",
+    "eight eyes arranged in two rows",
+    "two chelicerae (fang-like mouthparts)",
+    "two pedipalps (leg-like appendages)"
+  ],
+  "black and gold garden spider": [
+    "a yellow or orange body",
+    "a black or dark brown abdomen with a yellow or orange stripe",
+    "eight black or dark brown legs",
+    "two black or dark brown chevron-shaped markings on the top of the abdomen",
+    "two black or dark brown spots on the bottom of the abdomen",
+    "a black or dark brown head with two black or dark brown eyes"
+  ],
+  "green lizard": [
+    "green or brown body with black spots",
+    "long tail",
+    "small head",
+    "long, thin legs",
+    "webbed feet",
+    "long, sticky tongue"
+  ],
+  "green snake": [
+    "long, slender body",
+    "green coloration",
+    "smooth scales",
+    "pointed head",
+    "slit-like pupils"
+  ],
+  "hammerhead": [
+    "large, flat head with protruding eyes",
+    "long, wide body",
+    "large fins",
+    "grey or brown coloration",
+    "white underside"
+  ],
+  "hognose snake": [
+    "a snake with a distinctive upturned nose",
+    "brown, black, or grey in color",
+    "a pattern of dark spots or bands on the body",
+    "a light-colored belly",
+    "a relatively thick body",
+    "a length of 2-3 feet"
+  ],
+  "horned viper": [
+    "a venomous snake",
+    "light brown or tan with dark brown or black markings",
+    "a triangular head with horns",
+    "a thick body",
+    "a long tail",
+    "small eyes"
+  ],
+  "king snake": [
+    "a non-venomous snake",
+    "black, brown, or olive-colored",
+    "a light-colored stripe down the center of the body",
+    "a pointed head",
+    "round eyes",
+    "a long, slender body",
+    "smooth scales"
+  ],
+  "kite": [
+    "a bird of prey",
+    "wingspan of 2-3 feet",
+    "long, narrow tail",
+    "hooked beak",
+    "talons on feet",
+    "plumage that is mostly white, black, or grey"
+  ],
+  "leatherback turtle": [
+    "large, dark-colored turtle",
+    "smooth, leathery shell",
+    "long, narrow head",
+    "small, clawed flippers",
+    "long, powerful tail",
+    "small, black eyes"
+  ],
+  "loggerhead": [
+    "large, hard shell",
+    "brown, red, or yellow-brown",
+    "long neck",
+    "large head",
+    "two sets of flippers",
+    "a tail",
+    "a small mouth"
+  ],
+  "redshank": [
+    "a wading bird",
+    "red legs",
+    "a black bill",
+    "a white belly",
+    "a brown back",
+    "a long, black-and-white tail",
+    "a white rump"
+  ],
+  "sidewinder": [
+    "a snake with a rattle at the end of its tail",
+    "a light-colored body with dark bands",
+    "a triangular head",
+    "a slender body",
+    "a long, curved tail",
+    "small eyes",
+    "a heat-sensing pit between the eye and the nostril"
+  ],
+  "thunder snake": [
+    "small, thin snake",
+    "brown or reddish brown",
+    "head is barely wider than the body",
+    "no visible eyes",
+    "smooth, glossy scales",
+    "burrows underground"
+  ],
+  "whiptail": [
+    "a small to medium sized lizard",
+    "a long, thin body",
+    "a long tail",
+    "short legs",
+    "a pointed snout",
+    "small, round eyes",
+    "smooth, dry skin",
+    "a light brown or tan coloration with dark stripes running down the body"
+  ],
+  "drake": [
+    "webbed feet",
+    "a bill or beak",
+    "feathers",
+    "a water-repellant coat",
+    "a body shape adapted for swimming",
+    "wings that are adapted for flying"
+  ],
+  "peacock": [
+    "a large, brightly-colored bird",
+    "a long tail with colorful feathers",
+    "a crest of feathers on the head",
+    "blue or green skin on the head and neck",
+    "yellow eyes"
+  ],
+  "prairie chicken": [
+    "a chicken-like bird",
+    "mottled brown, grey, and white plumage",
+    "a long tail",
+    "a round body",
+    "short legs",
+    "a small head",
+    "a sharp beak"
+  ],
+  "red-backed sandpiper": [
+    "small, sparrow-like bird",
+    "brown upperparts with black streaks",
+    "white underparts with a black belly band",
+    "black bill",
+    "black legs and feet",
+    "long, black wingtips",
+    "white rump",
+    "in breeding plumage, has a chestnut breast and belly"
+  ],
+  "water ouzel": [
+    "a small, dark bird",
+    "a plump body",
+    "a short tail",
+    "a short, stout bill",
+    "dark eyes",
+    "dark legs",
+    "webbed feet",
+    "a white breast with a dark band across the center"
+  ]
+}
