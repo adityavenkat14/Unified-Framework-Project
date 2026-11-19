@@ -1,3 +1,49 @@
+# UVA: few-shot adaptation of a localised CLIP pipeline
+
+This repository contains the code for UVA (ICLR 2027 submission). The paper's method uses:
+- `main.py` and `helper.py`: ABS regions and the ABS+WCA soft-matching scorer;
+- `methods/bifta_dr.py`: BiFTA-DR description refinement;
+- `methods/goal_adapter_train.py`: adapter training;
+- `methods/goal_adapter_eval.py`: evaluation and the LaZSL agreement check.
+
+The backbone is the frozen OpenAI CLIP ViT-B/16 (`--backbone openai`, the default). The GOAL and fusion options described further below are not used in the paper.
+
+## Setup
+
+```bash
+pip install -r requirements.txt
+```
+
+Set `data_path` in `cfgs/<dataset>.yaml` to your copy of the dataset (`cub`, `oxford_pet` or `imagenet100`). See `cfgs/README.md` for which config keys actually control a run.
+
+## Run (from the repository root)
+
+```bash
+# 1. Zero-shot baselines and ABS+WCA ("ours"); this also builds the test-set region cache
+python main.py --dataset_name cub
+
+# 2. Train the two adapters (16 training + 4 validation images per class, lambda = 0.2, K = 30)
+PYTHONPATH=.:methods python methods/goal_adapter_train.py --dataset_name cub --seed 0
+#    -> writes adapters_cub_16shot.pt (overwritten by the next run on the same dataset)
+
+# 3. Evaluate UVA and the WCA-LaZSL agreement on the test cache built in step 1
+PYTHONPATH=.:methods python methods/goal_adapter_eval.py --dataset_name cub --adapter_path adapters_cub_16shot.pt
+
+# Code-level check of the scorer on synthetic data (no dataset needed)
+python analysis/score_check.py
+```
+
+## What to expect from a new run
+
+- **ABS+WCA and UVA numbers will differ from the paper's.** Image regions are sampled at random when a feature cache is built, and the original caches, seeds and image lists were not retained. A new run is a new draw, not a reproduction of the reported runs.
+- **The CLIP, CLIP-E, CLIP-D, CuPL and BiFTA-DR rows** use only the global image embedding, so they do not depend on random regions.
+- **The `±0.00` printed by the scripts is not a variance.** It comes from repeating the same deterministic evaluation (`n_run`).
+- **ImageNet-100 is not reproducible as reported.** The paper's runs capped the training pool at 30 images per class with a data-loader change that is not in this repository.
+
+---
+
+*The notes below describe an earlier GOAL/fusion pipeline that is not used in the paper.*
+
 # Unified GOAL → ABS(WCA) → LaZSL pipeline
 
 ## What's actually merged, and what's a stub

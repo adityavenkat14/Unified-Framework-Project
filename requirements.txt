@@ -12,3 +12,11 @@ opencv-python-headless
 transformers
 Pillow
 requests
+
+# Also needed outside Colab (Colab preinstalls them). Versions are not pinned:
+# the versions used for the reported runs were not recorded.
+torch
+torchvision
+numpy
+# only for demo/materialize_imagenet100.py
+datasets
